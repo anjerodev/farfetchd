@@ -86,11 +86,16 @@ const HistoryItem = ({
         <span
           className={cn(
             'pointer-events-none w-14 shrink-0 rounded-sm px-1 py-0.5 text-center text-xs uppercase',
-            item.method === Method.GET && 'bg-green-400/20 text-green-400',
-            item.method === Method.POST && 'bg-blue-400/20 text-blue-400',
-            item.method === Method.PUT && 'bg-yellow-400/20 text-yellow-400',
-            item.method === Method.PATCH && 'bg-purple-400/20 text-purple-400',
-            item.method === Method.DELETE && 'bg-red-400/20 text-red-400'
+            item.method === Method.GET &&
+              'bg-green-400/20 text-green-700 dark:text-green-400',
+            item.method === Method.POST &&
+              'bg-blue-400/20 text-blue-700 dark:text-blue-400',
+            item.method === Method.PUT &&
+              'bg-yellow-400/20 text-yellow-700 dark:text-yellow-400',
+            item.method === Method.PATCH &&
+              'bg-purple-400/20 text-purple-700 dark:text-purple-400',
+            item.method === Method.DELETE &&
+              'bg-red-400/20 text-red-700 dark:text-red-400'
           )}
         >
           {item.method}
