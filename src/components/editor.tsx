@@ -11,29 +11,41 @@ import { cn } from '@/lib/utils'
 
 const defaultSettings: CreateThemeOptions['settings'] = {
   background: 'transparent',
-  foreground: '#787c99',
-  caret: '#c0caf5',
-  selection: '#474b6640',
-  selectionMatch: '#16161e',
+  foreground: 'hsl(var(--e-foreground))',
+  caret: 'hsl(var(--e-caret))',
+  selection: 'hsl(var(--e-selection)/0.3)',
+  selectionMatch: 'hsl(var(--e-selection-match))',
   gutterBackground: 'transparent',
-  gutterForeground: '#787c99',
+  gutterForeground: 'hsl(var(--e-gutter-foreground))',
   gutterBorder: 'transparent',
-  lineHighlight: '#474b6611',
+  lineHighlight: 'hsl(var(--e-selection)/0.2)',
   fontSize: '14px',
 }
 
 const style: CreateThemeOptions['styles'] = [
-  { tag: t.keyword, color: '#bb9af7' },
-  { tag: [t.name, t.deleted, t.character, t.macroName], color: '#c0caf5' },
-  { tag: [t.propertyName], color: '#7aa2f7' },
+  { tag: t.keyword, color: 'hsl(var(--e-keyword))' },
+  {
+    tag: [t.name, t.deleted, t.character, t.macroName],
+    color: 'hsl(var(--e-name))',
+  },
+  { tag: [t.propertyName], color: 'hsl(var(--e-property-name))' },
   {
     tag: [t.processingInstruction, t.string, t.inserted, t.special(t.string)],
-    color: '#9ece6a',
+    color: 'hsl(var(--e-string))',
   },
-  { tag: [t.function(t.variableName), t.labelName], color: '#7aa2f7' },
-  { tag: [t.color, t.constant(t.name), t.standard(t.name)], color: '#bb9af7' },
-  { tag: [t.definition(t.name), t.separator], color: '#c0caf5' },
-  { tag: [t.className], color: '#c0caf5' },
+  {
+    tag: [t.function(t.variableName), t.labelName],
+    color: 'hsl(var(--e-function))',
+  },
+  {
+    tag: [t.color, t.constant(t.name), t.standard(t.name)],
+    color: 'hsl(var(--e-constant))',
+  },
+  {
+    tag: [t.definition(t.name), t.separator],
+    color: 'hsl(var(--e-definition))',
+  },
+  { tag: [t.className], color: 'hsl(var(--e-class-name))' },
   {
     tag: [
       t.number,
@@ -44,22 +56,29 @@ const style: CreateThemeOptions['styles'] = [
       t.namespace,
       t.bracket,
     ],
-    color: '#ff9e64',
+    color: 'hsl(var(--e-number))',
   },
-  { tag: [t.typeName], color: '#0db9d7' },
-  { tag: [t.operator, t.operatorKeyword], color: '#bb9af7' },
-  { tag: [t.url, t.escape, t.regexp, t.link], color: '#b4f9f8' },
-  { tag: [t.meta, t.comment], color: '#444b6a' },
+  { tag: [t.typeName], color: 'hsl(var(--e-type-name))' },
+  { tag: [t.operator, t.operatorKeyword], color: 'hsl(var(--e-operator))' },
+  { tag: [t.url, t.escape, t.regexp, t.link], color: 'hsl(var(--e-url))' },
+  { tag: [t.meta, t.comment], color: 'hsl(var(--e-comment))' },
   { tag: t.strong, fontWeight: 'bold' },
   { tag: t.emphasis, fontStyle: 'italic' },
   { tag: t.link, textDecoration: 'underline' },
-  { tag: t.heading, fontWeight: 'bold', color: '#89ddff' },
-  { tag: [t.atom, t.bool, t.special(t.variableName)], color: '#c0caf5' },
-  { tag: t.invalid, color: '#ff5370' },
+  { tag: t.heading, fontWeight: 'bold', color: 'hsl(var(--e-heading))' },
+  {
+    tag: [t.atom, t.bool, t.special(t.variableName)],
+    color: 'hsl(var(--e-atom))',
+  },
+  { tag: t.invalid, color: 'hsl(var(--e-invalid))' },
   { tag: t.strikethrough, textDecoration: 'line-through' },
   {
     tag: [t.bracket],
-    color: '#b4f9f8',
+    color: 'hsl(var(--e-bracket))',
+  },
+  {
+    tag: [t.squareBracket],
+    color: 'hsl(var(--e-number))',
   },
 ]
 

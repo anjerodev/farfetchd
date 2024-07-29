@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 163 25% 92%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -24,12 +24,31 @@
     --input: 240 5.9% 90%;
     --ring: 240 10% 3.9%;
     --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
     --scrollbar: 60 2% 70%;
+
+    /* Editor colors */
+    --e-foreground: 233 14% 54%;
+    --e-caret: 228 19% 56%;
+    --e-selection: 228 19% 80%;
+    --e-selection-match: 228 19% 80%;
+    --e-gutter-foreground: 233 14% 54%;
+    --e-keyword: 261 85% 35%; /* #7a5da8 */
+    --e-name: 229 73% 30%; /* #464c64 */
+    --e-property-name: 221 82% 45%; /* #315ea4 */
+    --e-string: 92 32% 32%; /* #506b38 */
+    --e-function: 221 82% 45%; /* #315ea4 */
+    --e-constant: 261 85% 35%; /* #7a5da8 */
+    --e-definition: 229 73% 30%; /* #464c64 */
+    --e-class-name: 229 73% 30%; /* #464c64 */
+    --e-number: 22 100% 45%; /* #d9823a */
+    --e-type-name: 188 92% 30%; /* #096980 */
+    --e-operator: 261 85% 35%; /* #7a5da8 */
+    --e-url: 180 86% 35%; /* #2a9fa0 */
+    --e-comment: 226 23% 20%; /* #1b1e2d */
+    --e-heading: 197 100% 35%; /* #2a9fd6 */
+    --e-atom: 229 73% 30%; /* #464c64 */
+    --e-invalid: 348 86% 45%; /* #cc434d */
+    --e-bracket: 180 86% 35%; /* #2a9fa0 */
   }
 
   .dark {
@@ -52,12 +71,31 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
     --scrollbar: 0 0% 49%;
+
+    /* Editor colors */
+    --e-foreground: 233 14% 54%;
+    --e-caret: 229 73% 86%;
+    --e-selection: 232 18% 34%;
+    --e-selection-match: 240 15% 10%;
+    --e-gutter-foreground: 233 14% 54%;
+    --e-keyword: 261 85% 79%; /* #bb9af7 */
+    --e-name: 229 73% 86%; /* #c0caf5 */
+    --e-property-name: 221 82% 74%; /* #7aa2f7 */
+    --e-string: 89 60% 67%; /* #9ece6a */
+    --e-function: 221 82% 74%; /* #7aa2f7 */
+    --e-constant: 261 85% 79%; /* #bb9af7 */
+    --e-definition: 229 73% 86%; /* #c0caf5 */
+    --e-class-name: 229 73% 86%; /* #c0caf5 */
+    --e-number: 22 100% 68%; /* #ff9e64 */
+    --e-type-name: 188 92% 44%; /* #0db9d7 */
+    --e-operator: 261 85% 79%; /* #bb9af7 */
+    --e-url: 180 86% 85%; /* #b4f9f8 */
+    --e-comment: 226 23% 34%; /* #444b6a */
+    --e-heading: 197 100% 74%; /* #89ddff */
+    --e-atom: 229 73% 86%; /* #c0caf5 */
+    --e-invalid: 348 86% 64%; /* #ff5370 */
+    --e-bracket: 180 86% 85%; /* #b4f9f8 */
   }
 
   * {
@@ -84,9 +122,5 @@
 @layer base {
   body {
     @apply bg-background text-foreground;
-  }
-
-  .cm-content ::selection {
-    background: red;
   }
 }

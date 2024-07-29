@@ -6,7 +6,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <FetcherProvider>
         <div className="grid h-dvh grid-cols-[minmax(200px,_0.3fr)_minmax(500px,_1fr)] overflow-hidden">
           <Sidebar />

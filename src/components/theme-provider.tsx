@@ -30,6 +30,11 @@ export function ThemeProvider({
   const [theme, setTheme] = useState<Theme>(
     () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
   )
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   useEffect(() => {
     const root = window.document.documentElement
@@ -56,6 +61,9 @@ export function ThemeProvider({
       setTheme(theme)
     },
   }
+
+  // To avoid flash in buttons due to colors transitions
+  if (!isMounted) return null
 
   return (
     <ThemeProviderContext.Provider {...props} value={value}>

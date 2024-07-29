@@ -25,26 +25,26 @@ export const RequestPanel = () => {
               Headers
               {form.getValues('headers').filter((header) => header.key !== '')
                 .length > 0 && (
-                <span className="ml-3 size-2 shrink-0 rounded-full bg-primary" />
+                <span className="ml-2 size-1.5 shrink-0 rounded-full bg-primary" />
               )}
             </TabsTrigger>
             <TabsTrigger value={TABS.PARAMS}>
               Params
               {form.getValues('params').filter((param) => param.key !== '')
                 .length > 0 && (
-                <span className="ml-3 size-2 shrink-0 rounded-full bg-primary" />
+                <span className="ml-2 size-1.5 shrink-0 rounded-full bg-primary" />
               )}
             </TabsTrigger>
             <TabsTrigger value={TABS.BODY}>
               Body
               {form.getValues('body') !== '' && (
-                <span className="ml-3 size-2 shrink-0 rounded-full bg-primary" />
+                <span className="ml-2 size-1.5 shrink-0 rounded-full bg-primary" />
               )}
             </TabsTrigger>
             <TabsTrigger value={TABS.TYPES}>
               Types
               {form.getValues('reqTypes') !== '' && (
-                <span className="ml-3 size-2 shrink-0 rounded-full bg-primary" />
+                <span className="ml-2 size-1.5 shrink-0 rounded-full bg-primary" />
               )}
             </TabsTrigger>
           </TabsList>

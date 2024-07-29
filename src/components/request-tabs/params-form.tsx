@@ -57,7 +57,7 @@ export const ParamsForm = () => {
                   <Input
                     placeholder="name"
                     onChange={(e) => handleChange(e, index, 'key', onChange)}
-                    className={cn('w-full text-[#ff9e64]')}
+                    className={cn('w-full text-[hsl(var(--e-constant))]')}
                     {...field}
                   />
                 </FormControl>
@@ -76,7 +76,12 @@ export const ParamsForm = () => {
                     {...field}
                   />
                 </FormControl>
-                <div className="absolute inset-y-1 right-1 flex w-0 items-center justify-end bg-background transition-[width] group-hover:w-8">
+                <div
+                  className={cn(
+                    'absolute inset-y-1 right-1 hidden w-0 items-center justify-end bg-card transition-[width]',
+                    index !== fields.length - 1 && 'flex group-hover:w-8'
+                  )}
+                >
                   {index !== fields.length - 1 && (
                     <Button
                       type="button"
