@@ -1,11 +1,48 @@
 import { useLocalStorage } from 'usehooks-ts'
 
-import { FetchSchemaType } from '@/lib/types'
+import { BodyTypeEnum, FetchSchemaType, Method } from '@/lib/types'
+
+const walkThroughSetUp = [
+  {
+    endpoint: 'https://jsonplaceholder.typicode.com/posts',
+    method: Method.POST,
+    bodyType: BodyTypeEnum.JSON,
+    body: '',
+    reqTypes: `type Post {
+  "title": string
+  "body": string
+  "userId": number
+}`,
+    headers: [
+      {
+        key: 'content-type',
+        value: 'application/json; charset=UTF-8',
+        secret: false,
+      },
+    ],
+    params: [{ key: '', value: '' }],
+  },
+  {
+    endpoint: 'https://jsonplaceholder.typicode.com/comments',
+    method: Method.GET,
+    bodyType: BodyTypeEnum.JSON,
+    body: '',
+    reqTypes: '',
+    headers: [
+      {
+        key: 'content-type',
+        value: 'application/json; charset=UTF-8',
+        secret: false,
+      },
+    ],
+    params: [{ key: 'postId', value: '1' }],
+  },
+]
 
 export const useHistory = () => {
   const [history, setHistory, removeHistory] = useLocalStorage<
     FetchSchemaType[]
-  >('history', [])
+  >('history', walkThroughSetUp)
 
   const mutateHistory = {
     add: (item: FetchSchemaType) => {

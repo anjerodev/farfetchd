@@ -40,18 +40,7 @@ const defaultValues = {
   method: Method.GET,
   bodyType: BodyTypeEnum.JSON,
   body: '',
-  reqTypes: `type User = {
-  name: string
-  age: number
-  registered: boolean
-  location: Location
-}
-
-type Location = {
-  city: string
-  postalCode: number
-  country: string
-}`,
+  reqTypes: '',
   headers: [{ key: '', value: '', secret: false }],
   params: [{ key: '', value: '' }],
 }
