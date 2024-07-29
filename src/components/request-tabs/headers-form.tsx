@@ -116,9 +116,9 @@ export const HeadersForm = () => {
                     onClick={() => field.onChange(!field.value)}
                   >
                     {field.value ? (
-                      <Icons.hide className="size-4" />
-                    ) : (
                       <Icons.show className="size-4" />
+                    ) : (
+                      <Icons.hide className="size-4" />
                     )}
                   </Button>
                 </FormControl>
