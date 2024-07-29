@@ -73,7 +73,24 @@ const HistoryItem = ({
   const handleDelete = () => mutateHistory.removeItem(index)
 
   const handleSetItem = () => {
-    form.reset(item)
+    const headersAreEmpty = item.headers.every(
+      (h) => h.key === '' && h.value === ''
+    )
+    const paramsAreEmpty = item.params.every(
+      (p) => p.key === '' && p.value === ''
+    )
+    const headers = headersAreEmpty
+      ? item.headers
+      : [...item.headers, { key: '', value: '', secret: false }]
+    const params = paramsAreEmpty
+      ? item.params
+      : [...item.params, { key: '', value: '' }]
+
+    form.reset({
+      ...item,
+      headers,
+      params,
+    })
     clearResult()
   }
 

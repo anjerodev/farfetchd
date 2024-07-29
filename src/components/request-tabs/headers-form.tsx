@@ -26,9 +26,9 @@ export const HeadersForm = () => {
 
     const isEmpty =
       value === '' &&
-      Object.entries(indexValues).filter(
-        ([key, value]) => key !== keyName && value !== ''
-      ).length === 0
+      Object.entries(indexValues).every(
+        ([key, val]) => key === keyName || key === 'secret' || val === ''
+      )
 
     if (index === fields.length - 1 && value.length > 0) {
       insert(
