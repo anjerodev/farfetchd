@@ -66,7 +66,7 @@ const HistoryItem = ({
   item: FetchSchemaType
   index: number
 }) => {
-  const { form } = useFetcher()
+  const { form, clearResult } = useFetcher()
   const [deleting, setDeleting] = useState(false)
   const { mutateHistory } = useHistory()
 
@@ -74,6 +74,7 @@ const HistoryItem = ({
 
   const handleSetItem = () => {
     form.reset(item)
+    clearResult()
   }
 
   return (
