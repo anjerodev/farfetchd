@@ -1,8 +1,9 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useFetcher } from '@/components/fetcher-provider'
 
-import { ArrayFieldForm } from './request-tabs/array-fields.form'
 import { BodyForm } from './request-tabs/body-form'
+import { HeadersForm } from './request-tabs/headers-form'
+import { ParamsForm } from './request-tabs/params-form'
 import { TypesForm } from './request-tabs/types-form'
 
 const TABS = {
@@ -49,10 +50,10 @@ export const RequestPanel = () => {
           </TabsList>
         </header>
         <TabsContent value={TABS.HEADERS}>
-          <ArrayFieldForm name="headers" />
+          <HeadersForm />
         </TabsContent>
         <TabsContent value={TABS.PARAMS}>
-          <ArrayFieldForm name="params" />
+          <ParamsForm />
         </TabsContent>
         <TabsContent
           value={TABS.BODY}

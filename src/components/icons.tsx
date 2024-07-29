@@ -2,6 +2,8 @@ import {
   Ban,
   Check,
   Copy,
+  Eye,
+  EyeOff,
   History,
   Loader2,
   LucideProps,
@@ -44,4 +46,6 @@ export const Icons = {
   check: Check,
   cancel: X,
   add: Plus,
+  show: Eye,
+  hide: EyeOff,
 }

@@ -34,7 +34,7 @@ export const MainForm = () => {
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={Method.GET}
-                  {...field}
+                  value={field.value}
                 >
                   <FormControl>
                     <SelectTrigger className="border-none bg-transparent">

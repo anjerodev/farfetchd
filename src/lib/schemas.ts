@@ -19,6 +19,12 @@ export const fetchSchema = z.object({
   ]),
   bodyType: z.enum([BodyTypeEnum.JSON, BodyTypeEnum.FORM]),
   reqTypes: z.string(),
-  headers: z.array(z.object({ key: z.string(), value: z.string() })),
+  headers: z.array(
+    z.object({
+      key: z.string(),
+      value: z.string(),
+      secret: z.boolean().default(false),
+    })
+  ),
   params: z.array(z.object({ key: z.string(), value: z.string() })),
 })

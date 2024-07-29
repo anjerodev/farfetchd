@@ -1,16 +1,17 @@
 import { useFieldArray } from 'react-hook-form'
 
+import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { FormControl, FormField, FormItem } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useFetcher } from '@/components/fetcher-provider'
 import { Icons } from '@/components/icons'
 
-export const ArrayFieldForm = ({ name }: { name: 'headers' | 'params' }) => {
+export const ParamsForm = () => {
   const { form } = useFetcher()
   const { fields, insert, remove } = useFieldArray({
     control: form.control,
-    name,
+    name: 'params',
   })
 
   const handleChange = (
@@ -20,7 +21,7 @@ export const ArrayFieldForm = ({ name }: { name: 'headers' | 'params' }) => {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   ) => {
     const { value } = e.target
-    const indexValues = form.getValues(`${name}.${index}`)
+    const indexValues = form.getValues(`params.${index}`)
 
     const isEmpty =
       value === '' &&
@@ -32,7 +33,7 @@ export const ArrayFieldForm = ({ name }: { name: 'headers' | 'params' }) => {
       insert(fields.length, { key: '', value: '' }, { shouldFocus: false })
     } else if (isEmpty) {
       remove(index)
-      form.setFocus(`${name}.${index}.key`)
+      form.setFocus(`params.${index}.key`)
     }
 
     onChange(e)
@@ -40,7 +41,7 @@ export const ArrayFieldForm = ({ name }: { name: 'headers' | 'params' }) => {
 
   const handleRemove = (index: number) => {
     remove(index)
-    form.setFocus(`${name}.${index}.key`)
+    form.setFocus(`params.${index}.key`)
   }
 
   return (
@@ -49,14 +50,14 @@ export const ArrayFieldForm = ({ name }: { name: 'headers' | 'params' }) => {
         <div className="group relative flex items-center gap-2" key={id}>
           <FormField
             control={form.control}
-            name={`${name}.${index}.key`}
+            name={`params.${index}.key`}
             render={({ field: { onChange, ...field } }) => (
               <FormItem className="grow">
                 <FormControl>
                   <Input
                     placeholder="name"
                     onChange={(e) => handleChange(e, index, 'key', onChange)}
-                    className="text-[#7aa2f7]"
+                    className={cn('w-full text-[#ff9e64]')}
                     {...field}
                   />
                 </FormControl>
@@ -65,9 +66,9 @@ export const ArrayFieldForm = ({ name }: { name: 'headers' | 'params' }) => {
           />
           <FormField
             control={form.control}
-            name={`${name}.${index}.value`}
+            name={`params.${index}.value`}
             render={({ field: { onChange, ...field } }) => (
-              <FormItem className="grow">
+              <FormItem className="relative grow space-y-0">
                 <FormControl>
                   <Input
                     placeholder="value"
@@ -75,20 +76,22 @@ export const ArrayFieldForm = ({ name }: { name: 'headers' | 'params' }) => {
                     {...field}
                   />
                 </FormControl>
+                <div className="absolute inset-y-1 right-1 flex w-0 items-center justify-end bg-background transition-[width] group-hover:w-8">
+                  {index !== fields.length - 1 && (
+                    <Button
+                      type="button"
+                      size="icon"
+                      variant="ghost"
+                      className="hidden size-8 shrink-0 rounded-sm group-hover:flex group-hover:animate-in group-hover:fade-in group-hover:slide-in-from-right-4"
+                      onClick={() => handleRemove(index)}
+                    >
+                      <Icons.trash className="size-4" />
+                    </Button>
+                  )}
+                </div>
               </FormItem>
             )}
           />
-          {index !== fields.length - 1 && (
-            <Button
-              type="button"
-              size="icon"
-              variant="outline"
-              className="absolute right-1 hidden size-8 rounded-sm group-hover:flex group-hover:animate-in group-hover:zoom-in"
-              onClick={() => handleRemove(index)}
-            >
-              <Icons.trash className="size-4" />
-            </Button>
-          )}
         </div>
       ))}
     </div>

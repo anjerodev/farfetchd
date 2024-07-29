@@ -52,7 +52,7 @@ type Location = {
   postalCode: number
   country: string
 }`,
-  headers: [{ key: '', value: '' }],
+  headers: [{ key: '', value: '', secret: false }],
   params: [{ key: '', value: '' }],
 }
 
@@ -71,7 +71,6 @@ export const FetcherProvider = ({ children }: ProviderProps) => {
   }
 
   const onSubmit = async (values: z.infer<typeof fetchSchema>) => {
-    console.log({ values })
     try {
       setIsPending(true)
       clearResult()
@@ -135,8 +134,6 @@ export const FetcherProvider = ({ children }: ProviderProps) => {
 
         options.searchParams = search
       }
-
-      console.log({ options })
 
       const response = await ky[method](endpoint, options)
 
