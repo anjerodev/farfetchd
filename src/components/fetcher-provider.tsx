@@ -181,7 +181,7 @@ export const FetcherProvider = ({ children }: ProviderProps) => {
         cors,
       }))
     } finally {
-      mutateHistory.add(values)
+      mutateHistory().add(values)
       setIsPending(false)
     }
   }

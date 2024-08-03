@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react'
 
-type Theme = 'dark' | 'light' | 'system'
+import type { Theme } from '@/lib/types'
+import { useSettings } from '@/hooks/use-settings'
 
 type ThemeProviderProps = {
   children: React.ReactNode
@@ -24,11 +25,12 @@ export const ThemeProviderContext =
 export function ThemeProvider({
   children,
   defaultTheme = 'system',
-  storageKey = 'vite-ui-theme',
   ...props
 }: ThemeProviderProps) {
+  const { settings, mutateSettings } = useSettings()
+
   const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
+    () => settings.theme || defaultTheme
   )
   const [isMounted, setIsMounted] = useState(false)
 
@@ -57,7 +59,7 @@ export function ThemeProvider({
   const value = {
     theme,
     setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme)
+      mutateSettings().set({ name: 'theme', value: theme })
       setTheme(theme)
     },
   }

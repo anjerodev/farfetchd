@@ -1,3 +1,4 @@
+import siteConfig from '@/lib/config'
 import { cn, formatSize, formatTime } from '@/lib/utils'
 import { ClipboardButton } from '@/components/clipboard-button'
 import { Editor } from '@/components/editor'
@@ -53,7 +54,7 @@ export const ResponsePanel = () => {
                         official{' '}
                         <a
                           className="underline hover:text-foreground"
-                          href="https://chrome.google.com/webstore/detail/farfetchd-chrome-extenison"
+                          href={siteConfig.links.extension}
                           target="_blank"
                         >
                           Farfetchd Chrome Extension

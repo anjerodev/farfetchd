@@ -2,8 +2,9 @@ import { ReactNode, useEffect, useState } from 'react'
 import { CoreMessage, generateText } from 'ai'
 import { ollama } from 'ollama-ai-provider'
 
-import { BodyTypeEnum } from '@/lib/types'
+import { AI_PROVIDERS, BodyTypeEnum, MODELS } from '@/lib/types'
 import { preprocessJson, prettify } from '@/lib/utils'
+import { useSettings } from '@/hooks/use-settings'
 import { Button } from '@/components/ui/button'
 import { FormField } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
@@ -27,6 +28,7 @@ export const BodyForm = () => {
   const [isPending, setIsPending] = useState(false)
   const [nItems, setNItems] = useState(1)
   const [error, setError] = useState<ReactNode | undefined>()
+  const { settings } = useSettings()
 
   const { form } = useFetcher()
   form.watch('bodyType')
@@ -74,45 +76,51 @@ export const BodyForm = () => {
       },
     ]
 
+    const commonSettings = {
+      system:
+        'You are a helpful assistant that only returns valid JSON with the types that the user provides. DO NOT return empty or null values, at least it is specify on the types.',
+      messages,
+      temperature: 1,
+    }
+
     try {
       setError(undefined)
-      setIsPending(true)
-      const response = await generateText({
-        model: ollama('llama3.1:latest'),
-        system:
-          'You are a helpful assistant that only returns valid JSON with the types that the user provides. DO NOT return empty or null values, at least it is specify on the types.',
-        messages,
-        temperature: 1,
-      })
+      form.setValue('body', '')
 
-      const formattedJson = await prettify({
-        content: preprocessJson(response.text),
-        parser: 'json',
-      })
+      if (settings.aiProvider === AI_PROVIDERS.OLLAMA) {
+        setIsPending(true)
+        /* NOTE: For some reason, streaming with messages from ollama doesn't work */
 
-      /* NOTE: For some reason, streaming with messages from ollama doesn't work */
+        // const { textStream } = await streamText({
+        //   model: ollama('llama3.1:latest'),
+        //   system:
+        //     'You are a helpful assistant that only returns valid JSON with the keys that the user provides.',
+        //   messages,
+        //   temperature: 1,
+        // })
 
-      /*const { textStream } = await streamText({
-          model: ollama('llama3.1:latest'),
-          system:
-            'You are a helpful assistant that only returns valid JSON with the keys that the user provides.',
-          messages,
-          temperature: 1,
+        // for await (const textPart of textStream) {
+        //   const currentValue = form.getValues('body') || ''
+        //   form.setValue('body', `${currentValue}${textPart}`)
+        // }
+
+        const response = await generateText({
+          model: ollama(MODELS[AI_PROVIDERS.OLLAMA]),
+          ...commonSettings,
         })
-  
-        for await (const textPart of textStream) {
-          const currentValue = form.getValues('body') || ''
-          form.setValue('body', `${currentValue}${textPart}`)
-        }*/
-
-      form.setValue('body', formattedJson)
+        const formattedJson = await prettify({
+          content: preprocessJson(response.text),
+          parser: 'json',
+        })
+        form.setValue('body', formattedJson)
+      }
     } catch (error: any) {
       if (error.message === 'Failed to fetch') {
         setError(
           <>
             Install ollama and run <br />
             <code className="rounded bg-red-500/20 px-1 py-0.5">
-              pull llama3.1
+              pull {MODELS[AI_PROVIDERS.OLLAMA]}
             </code>
             <br />
             More info at{' '}

@@ -37,3 +37,25 @@ export type Result =
   | undefined
 
 export type FetchSchemaType = z.infer<typeof fetchSchema>
+
+export type History = FetchSchemaType[]
+
+export type Theme = 'dark' | 'light' | 'system'
+
+export type Settings = {
+  theme: Theme
+  aiProvider: AIProvider
+}
+
+// AI GENERATION
+export const AI_PROVIDERS = {
+  OLLAMA: 'ollama',
+} as const
+
+export type AIProvider = (typeof AI_PROVIDERS)[keyof typeof AI_PROVIDERS]
+
+export const MODELS = {
+  [AI_PROVIDERS.OLLAMA]: 'llama3.1:latest',
+} as const
+
+export type Model = (typeof MODELS)[keyof typeof MODELS]
