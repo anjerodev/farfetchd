@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useMemo } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { defaultSettings } from '@/lib/constants'
@@ -10,7 +10,7 @@ export const useSettings = () => {
     defaultSettings
   )
 
-  const mutateSettings = useCallback(
+  const mutateSettings = useMemo(
     () => ({
       set: ({
         name,

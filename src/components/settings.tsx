@@ -61,7 +61,7 @@ export const Settings = () => {
               name="theme"
               onValueChange={(value) => {
                 setTheme(value as Theme)
-                mutateSettings().set({ name: 'theme', value: value as Theme })
+                mutateSettings.set({ name: 'theme', value: value as Theme })
               }}
               defaultValue={settings.theme}
             >
@@ -85,7 +85,7 @@ export const Settings = () => {
             <Select
               name="ai_provider"
               onValueChange={(value) =>
-                mutateSettings().set({
+                mutateSettings.set({
                   name: 'aiProvider',
                   value: value as AIProvider,
                 })

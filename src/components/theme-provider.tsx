@@ -59,7 +59,7 @@ export function ThemeProvider({
   const value = {
     theme,
     setTheme: (theme: Theme) => {
-      mutateSettings().set({ name: 'theme', value: theme })
+      mutateSettings.set({ name: 'theme', value: theme })
       setTheme(theme)
     },
   }

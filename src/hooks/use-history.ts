@@ -1,15 +1,16 @@
-import { useCallback } from 'react'
+import { useMemo } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { walkThroughSetUp } from '@/lib/constants'
 import { FetchSchemaType } from '@/lib/types'
 
 export const useHistory = () => {
-  const [history, setHistory, removeHistory] = useLocalStorage<
-    FetchSchemaType[]
-  >('history', walkThroughSetUp)
+  const [history, setHistory] = useLocalStorage<FetchSchemaType[]>(
+    'history',
+    walkThroughSetUp
+  )
 
-  const mutateHistory = useCallback(
+  const mutateHistory = useMemo(
     () => ({
       add: (item: FetchSchemaType) => {
         setHistory((prev) => {
@@ -28,7 +29,7 @@ export const useHistory = () => {
           return newHistory
         })
       },
-      clear: removeHistory,
+      clear: () => setHistory([]),
     }),
     []
   )
