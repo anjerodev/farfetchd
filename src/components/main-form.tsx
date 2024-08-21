@@ -58,7 +58,11 @@ export const MainForm = () => {
             render={({ field }) => (
               <FormItem className="grow">
                 <FormControl>
-                  <Input className="border-none bg-transparent" {...field} />
+                  <Input
+                    aria-label="endpoint"
+                    className="border-none bg-transparent"
+                    {...field}
+                  />
                 </FormControl>
               </FormItem>
             )}
