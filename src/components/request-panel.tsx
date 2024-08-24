@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { useFetcher } from '@/components/fetcher-provider'
+import { useFetcher } from '@/components/contexts/fetcher-context'
 
 import { BodyForm } from './request-tabs/body-form'
 import { HeadersForm } from './request-tabs/headers-form'

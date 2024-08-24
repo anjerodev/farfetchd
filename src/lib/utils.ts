@@ -62,7 +62,7 @@ export function formatSize(size: number) {
 
 export function preprocessJson(jsonString: string) {
   const jsonObject = JSON.parse(jsonString)
-  const prettyJsonString = JSON.stringify(jsonObject, null, 2)
+  const prettyJsonString = JSON.stringify(jsonObject)
   return prettyJsonString
 }
 

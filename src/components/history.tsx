@@ -1,9 +1,9 @@
 import { BodyTypeEnum, Method } from '@/lib/types'
 import { useHistory } from '@/hooks/use-history'
 import { Button } from '@/components/ui/button'
+import { useFetcher } from '@/components/contexts/fetcher-context'
 import { Icons } from '@/components/icons'
 
-import { useFetcher } from './fetcher-provider'
 import { HistoryItem } from './history-item'
 
 export const History = () => {

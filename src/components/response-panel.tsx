@@ -1,8 +1,8 @@
 import siteConfig from '@/lib/config'
 import { cn, formatSize, formatTime } from '@/lib/utils'
 import { ClipboardButton } from '@/components/clipboard-button'
+import { useFetcher } from '@/components/contexts/fetcher-context'
 import { Editor } from '@/components/editor'
-import { useFetcher } from '@/components/fetcher-provider'
 import { Icons } from '@/components/icons'
 import { RequestChip } from '@/components/request-chip'
 

@@ -20,8 +20,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { useFetcher } from '@/components/contexts/fetcher-context'
 import { Editor } from '@/components/editor'
-import { useFetcher } from '@/components/fetcher-provider'
 import { Icons } from '@/components/icons'
 
 export const BodyForm = () => {

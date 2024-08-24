@@ -1,5 +1,5 @@
+import { FetcherProvider } from '@/components/contexts/fetcher-context'
 import { DevToolbar } from '@/components/dev-toolbar'
-import { FetcherProvider } from '@/components/fetcher-provider'
 import { MainForm } from '@/components/main-form'
 import { Sidebar } from '@/components/sidebar'
 import { ThemeProvider } from '@/components/theme-provider'

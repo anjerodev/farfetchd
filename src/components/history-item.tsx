@@ -4,9 +4,8 @@ import { FetchSchemaType, Method } from '@/lib/types'
 import { cn } from '@/lib/utils'
 import { useHistory } from '@/hooks/use-history'
 import { Button } from '@/components/ui/button'
+import { useFetcher } from '@/components/contexts/fetcher-context'
 import { Icons } from '@/components/icons'
-
-import { useFetcher } from './fetcher-provider'
 
 export const HistoryItem = ({
   item,

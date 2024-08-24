@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { useFetcher } from '@/components/fetcher-provider'
+import { useFetcher } from '@/components/contexts/fetcher-context'
 import { Icons } from '@/components/icons'
 import { RequestPanel } from '@/components/request-panel'
 import { ResponsePanel } from '@/components/response-panel'

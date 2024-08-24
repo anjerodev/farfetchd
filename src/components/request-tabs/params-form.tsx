@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { FormControl, FormField, FormItem } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { useFetcher } from '@/components/fetcher-provider'
+import { useFetcher } from '@/components/contexts/fetcher-context'
 import { Icons } from '@/components/icons'
 
 export const ParamsForm = () => {
